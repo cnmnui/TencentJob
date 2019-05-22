@@ -17,7 +17,7 @@ class TencentjobSpider(scrapy.Spider):
     def parse(self, response):
         res = json.loads(response.text)
         job_num = res["Data"]["Count"] # 获取职位总数
-        all_pg_num = int(job_num)//10 + 1 # 获取页面数
+        all_pg_num = int(job_num)//10 + 1 # 页面数
         for pg_num in range(1, all_pg_num + 1):
             list_url = 'https://careers.tencent.com/tencentcareer/api/post/Query?timestamp={0}&countryId=&cityId=' \
                        '&bgIds=&productId=&categoryId=&parentCategoryId=&attrId=&keyword=&pageIndex={1}' \
